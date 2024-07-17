@@ -13,7 +13,7 @@ from datetime import datetime
 current_year = datetime.now().year
 st.set_page_config(layout="wide")
 
-@st.cache_data
+#@st.cache_data
 def get_file(name):
   for i in st.session_state.uploaded_files:
     if i.name==name:
@@ -78,7 +78,7 @@ def create_line_chart(df1, df2, year1, year2):
     st.line_chart(df_combined, x='Month', y='QR Code', color='year')
 
 
-@st.cache_data
+#@st.cache_data
 def grouper(df,g,sort_month,ag):
   k=df.groupby(g).agg(ag).reset_index()
   if sort_month:
@@ -207,7 +207,7 @@ def map(df,y="QR Code",change=None,loc="State Name"):
   )
   #st.write(df)
   st.plotly_chart(fig)
-@st.cache_data
+#@st.cache_data
 def heat(g,res,v="QR Code"): #g=grouper(test,["Part Number","State Name"],False,"count")
 
   g = g.fillna(0)
@@ -228,7 +228,7 @@ def heat(g,res,v="QR Code"): #g=grouper(test,["Part Number","State Name"],False,
   fig.update_yaxes(scaleanchor="x",scaleratio=1,constrain="domain",range=[0, len(g['Part Number'].unique())])  # Set x-axis range
   fig.update_xaxes(scaleanchor="y",scaleratio=2,constrain="domain",range=[0, len(g['State Name'].unique())])   # Set y-axis range
   st.plotly_chart(fig)
-@st.cache_data
+#@st.cache_data
 def get(g1,g2,value_column="QR Code",thr=None):#g1-this year grouper on parts alone
   if thr:
     g1=g1[g1[value_column]>thr]
@@ -250,7 +250,7 @@ def get(g1,g2,value_column="QR Code",thr=None):#g1-this year grouper on parts al
                               f'{value_column}_this': f'{value_column} (This Year)'}, inplace=True)
 
   return top_g1,bot_g1,result_df[result_df["% Change"]>0].iloc[::-1] ,result_df[result_df["% Change"]<=0]
-@st.cache_data
+#@st.cache_data
 def rt(g,x,y):#x-statename partnumber y-qr code
   g[y] = g[y].astype(int)  # Convert to standard Python integer
   #st.write(g)
