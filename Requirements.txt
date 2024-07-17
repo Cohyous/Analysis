@@ -1,0 +1,8 @@
+pandas==2.2.2
+altair
+streamlit
+streamlit_navigation_bar
+numpy
+plotly
+
+streamlit_navigation_bar
