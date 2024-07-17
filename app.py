@@ -289,7 +289,7 @@ with st.sidebar:
       #st.write(file_contents)
       uploaded_files = st.file_uploader("Choose Excel files", accept_multiple_files=True)
 
-      options = [i for i in range(current_year,current_year-11,-1)]
+      options = [i for i in range(current_year+1,current_year-10,-1)]
       yearx = st.selectbox("Select a year", options,key="box1")
       yeary = st.selectbox("Select a year", options,key="box2")
 
